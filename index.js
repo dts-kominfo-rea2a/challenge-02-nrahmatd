@@ -23,19 +23,19 @@ function lakukanLooping(arrPegawai) {
 
       Contoh: ["Aisyah Nirmala", "Mansur Faisal", ...]
   */
-  let hasilLooping = null;
+  let hasilLooping = [];
 
   /*
     TODO 2: Buatlah sebuah variabel bernama "jumlahPria"
       yang berisi jumlah pria dari masing masing pegawai
   */
-  let jumlahPria = null;
+  let jumlahPria = 0;
 
   /*
     TODO 3: Buatlah sebuah variabel bernama "jumlahWanita"
       yang berisi jumlah wanita dari masing masing pegawai
   */
-  let jumlahWanita = null;
+  let jumlahWanita = 0;
 
   /*
     TODO 4: Buatlah sebuah variabel bernama "komentar"
@@ -48,7 +48,25 @@ function lakukanLooping(arrPegawai) {
       Apabila imbang, maka komentar akan berisi:
         "Jumlah Pria dan Wanita berimbang"
   */
-  let komentar = null;
+  let komentar = "";
+
+  /** Gabungkan nama dan counting jumlah pegawai berdasarkan jenis kelamin */
+  for (let i = 0; i < dataYangAkanDilooping.length; i++) {
+    hasilLooping.push(dataYangAkanDilooping[i].namaDepan + " " + dataYangAkanDilooping[i].namaBelakang);
+    if(dataYangAkanDilooping[i].jenisKelamin === "M")
+      jumlahPria++;
+    else if(dataYangAkanDilooping[i].jenisKelamin === "F")
+      jumlahWanita++;
+  }
+
+  /** Validasi jumlah pegawai pria an wanita */
+  if (jumlahPria > jumlahWanita)
+    komentar = "Jumlah Pria lebih banyak dari Wanita";
+  else if (jumlahPria < jumlahWanita)
+    komentar = "Jumlah Wanita lebih banyak dari Pria";
+  else if (jumlahPria === jumlahWanita)
+    komentar = "Jumlah Pria dan Wanita berimbang";
+
 
   // ! JANGAN DIMODIFIKASI
   return {
@@ -65,6 +83,7 @@ function main(data) {
   console.log(hasil.hasilLooping);
   console.log(hasil.jumlahPria);
   console.log(hasil.jumlahWanita);
+  console.log(hasil.komentar);
 
   return hasil;
 }
